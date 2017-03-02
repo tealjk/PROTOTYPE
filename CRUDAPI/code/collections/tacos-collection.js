@@ -1,8 +1,4 @@
 
-/*
- Meteor collections can be defined on the client/server. These are essentially "tables" in an SQL database.
- */
-
 Tacos = new Meteor.Collection('tacos');
 
 // To handle security, Meteor gives you access to Allow and Deny rules on the client. It gives a handful of operations to listen for,
@@ -10,13 +6,13 @@ Tacos = new Meteor.Collection('tacos');
 Tacos.allow({
     insert: function(){
         // This translates to "Should I allow client-side inserts?" and us saying "False, or no, don't do that!"
-        return false;
+        return true;
     },
     update: function(){
-        return false;
+        return true;
     },
     remove : function(){
-        return false;
+        return true;
     }
 });
 
@@ -25,14 +21,14 @@ Tacos.allow({
 Tacos.deny({
     insert: function(){
         // Deny inserts on the client by default.
-        return true;
+        return false;
     },
     update: function(){
         // Deny updates on the client by default.
-        return true;
+        return false;
     },
     remove: function(){
         // Deny removes on the client by default.
-        return true;
+        return false;
     }
 });

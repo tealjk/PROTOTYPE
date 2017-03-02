@@ -28,6 +28,11 @@ API = {
 
 
 
+
+
+
+
+
   handleRequest: function( context, resource, method ) {
     var connection = API.connection( context.request );
     if ( !connection.error ) {
@@ -81,31 +86,18 @@ API = {
 
                               ////////////GETTTTTT////////////////
 
-
       GET: function( context, connection ) {
 
           var hasQuery = API.utility.hasData( connection.data );
 
-
         if ( hasQuery ) {
 
           connection.data.owner = connection.owner;
-          // Note: we're doing a very simple find on our data here. This means that
-          // with something like our Toppings parameter, we're looking for the
-          // exact array passed (not the individual items in the array). To do
-          // that, you'd need to parse out the array items from connection.data
-          // and use the Mongo $in operator like:
-          // Pizza.find( { "toppings": { $in: connection.data.toppings } } );
+
           var getPizzas = Pizza.find( connection.data ).fetch();
-
-
-
 
           if ( getPizzas.length > 0 ) {
             API.utility.response( context, 200, getPizzas );
-
-
-
 
           } else {
             API.utility.response( context, 404, { error: 404, message: "No pizzas found, dude." } );
@@ -243,12 +235,7 @@ API = {
           API.utility.response( context, 403, { error: 403, message: "PUT calls must have a pizza ID and at least a name, crust, or toppings passed in the request body in the correct formats (String, String, Array)." } );
         }
       },
-
-
                               ////////////DELETE////////////////
-
-
-
 
       DELETE: function( context, connection ) {
         var hasQuery  = API.utility.hasData( connection.data ),
@@ -303,8 +290,9 @@ API = {
 
 
     hasData: function( data ) {
-      return Object.keys( data ).length > 0 ? true : false;
+      return Object.keys( data ).length > 0 ;
     },
+
     response: function( context, statusCode, data ) {
       context.response.setHeader( 'Content-Type', 'application/json' );
       context.response.statusCode = statusCode;

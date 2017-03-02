@@ -3,7 +3,10 @@
  This is an example of a tempalte where you'd use an {{each}} loop to pull data out of your DB.
 -->
 <template name="tacos">
+
+    <body>
     <h3>My Favorite Tacos</h3>
+
     {{#if tacos}}
     <ul class="tacos-list">
         {{#each tacos}}
@@ -11,8 +14,14 @@
         {{/each}}
     </ul>
     {{/if}}
-</template>
 
+    <input type="text" name="tacoName" placeholder="What's yummy?">
+    <button type="submit">Add Tasty Taco</button>
+
+
+    </body>
+
+</template>
 
 
 

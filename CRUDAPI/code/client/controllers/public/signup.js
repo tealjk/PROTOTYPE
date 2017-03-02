@@ -1,5 +1,6 @@
 
 Template.signup.onRendered(function(){
+
   $('#application-signup').validate({
 
     rules: {
@@ -21,7 +22,6 @@ Template.signup.onRendered(function(){
         email: "Please enter a valid email address."
       },
 
-
       password: {
         required: "Please enter a password to sign up.",
         minlength: "Please use at least six characters."
@@ -29,18 +29,18 @@ Template.signup.onRendered(function(){
     },
 
 
+
     submitHandler: function(){
       // Grab the user's details.
 
-
       var user = {
-
         email: $('[name="emailAddress"]').val(),
         password: $('[name="password"]').val()
-
-
-
       };
+
+
+
+
 
       // Create the user's account.
       Accounts.createUser({email: user.email, password: user.password}, function( error ){

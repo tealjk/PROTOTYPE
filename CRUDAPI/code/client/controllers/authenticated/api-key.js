@@ -1,7 +1,17 @@
+
+
+
+
+
+
+
 Template.apiKey.onCreated(function(){
   // Here, we're making use of Meteor's new template-level subscriptions.
   this.subscribe( "APIKey" );
 });
+
+
+
 
 Template.apiKey.helpers({
   apiKey: function() {
@@ -15,6 +25,10 @@ Template.apiKey.helpers({
     }
   }
 });
+
+
+
+
 
 Template.apiKey.events({
   'click .regenerate-api-key': function(){

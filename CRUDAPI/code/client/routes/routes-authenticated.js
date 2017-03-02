@@ -9,7 +9,7 @@ Router.route('index', {
 });
 
 
-Router.route('taco', {
+Router.route('tacos', {
     path: '/tacos',
     template: 'tacos'
 });
